@@ -1,6 +1,6 @@
 # dotfiles
 
-Ce dépôt contient mes fichiers de configuration personnels (« dotfiles ») pour mon environnement Linux/Wayland.  
+Ce dépôt contient mes fichiers de configuration personnels pour mon environnement Hyprland.  
 Il comprend la configuration de divers outils et gestionnaires de fenêtres pour un setup personnalisé.
 
 ## Contenu
@@ -16,9 +16,10 @@ Il comprend la configuration de divers outils et gestionnaires de fenêtres pour
 
 ## Prérequis
 
-- Un système sous Linux avec support Wayland  
+- Arch ou tout autre systèmes Linux supportant hyprland
 - Les logiciels listés ci-dessus installés  
-- Git (pour cloner ce dépôt)  
+- Git (pour cloner ce dépôt)
+- [Yay](https://github.com/Jguer/yay) pour certainnes dépendances de ce projets
 - Les droits d’accès nécessaires pour installer les fichiers de configuration
 
 ## Installation
