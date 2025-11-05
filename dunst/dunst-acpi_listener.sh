@@ -99,7 +99,7 @@ acpi_listen | while read -r line; do
         battery*)
             battery_check
             ;;
-        button/brightness*)
+        video/brightness*)
             brightness_event "$line"
             ;;
         button/volume*)
