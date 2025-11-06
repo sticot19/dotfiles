@@ -51,23 +51,28 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
     separator_color = frame
-    frame_color = "#aaaaaa"
+    frame_color = "#ffb2bc"
+    highlight = "#ffb2bc"
+    separator_color= "#9f8c8e"
 
 [experimental]
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
     timeout = 10
+    background = "#1a1112"
+    foreground = "#f0dedf"
+    highlight = "#72333e"
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
     timeout = 10
+    background = "#1a1112"
+    foreground = "#f0dedf"
+    highlight = "#72333e"
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
     timeout = 0
+    background = "#1a1112"
+    foreground = "#f0dedf"
+    highlight = "#ffb4ab"
+
