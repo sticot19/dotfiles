@@ -1,50 +1,91 @@
+@import "colors.css";
+
+/* ---- GLOBAL ---- */
 * {
 	background-image: none;
 	box-shadow: none;
 }
 
+/* ---- FENÊTRE PRINCIPALE ---- */
 window {
-	background-color: rgba(12, 12, 12, 0.9);
+	background-color: alpha(@surface_container, 0.85);
 }
 
+/* ---- BOUTONS ---- */
 button {
-    border-radius: 0;
-    border-color: black;
-	text-decoration-color: #FFFFFF;
-    color: #FFFFFF;
-	background-color: #1E1E1E;
-	border-style: solid;
+	border-radius: 12px;
 	border-width: 1px;
+	border-style: solid;
+	border-color: @outline_variant;
+
+	color: @on_surface;
+	background-color: @surface_container_high;
+
+	text-decoration-color: @on_surface;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 25%;
+
+	transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-button:focus, button:active, button:hover {
-	background-color: #3700B3;
+/* Effet au survol / focus / actif */
+button:focus,
+button:active,
+button:hover {
+	background-color: @primary;
+	color: @on_primary;
+	border-color: @primary;
 	outline-style: none;
 }
 
+/* ---- ICONES ---- */
 #lock {
-    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+	background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
 }
 
 #logout {
-    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+	background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
 }
 
 #suspend {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+	background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
 }
 
 #hibernate {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+	background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
 }
 
 #shutdown {
-    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+	background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
 }
 
 #reboot {
-    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+	background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}
+
+/* ---- COULEURS SPÉCIFIQUES PAR ACTION ---- */
+
+/* Fermeture de session / verrouillage */
+#lock:hover,
+#logout:hover {
+	background-color: @secondary;
+	color: @on_secondary;
+	border-color: @secondary;
+}
+
+/* Mise en veille / hibernation */
+#suspend:hover,
+#hibernate:hover {
+	background-color: @tertiary;
+	color: @on_tertiary;
+	border-color: @tertiary;
+}
+
+/* Redémarrage / arrêt */
+#reboot:hover,
+#shutdown:hover {
+	background-color: @error_container;
+	color: @on_error_container;
+	border-color: @error;
 }
