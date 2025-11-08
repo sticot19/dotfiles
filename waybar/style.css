@@ -1,49 +1,85 @@
+@import url("colors.css");
+
 * {
     border: none;
     border-radius: 0;
-    font-family: 'JetBrainsMono Nerd Font', 'monospace', monospace;
+    font-family: 'JetBrainsMono Nerd Font', monospace;
     font-size: 14px;
     min-height: 0;
 }
 
+/* ----- BARRE PRINCIPALE ----- */
 window#waybar {
-    background: transparent; /* rgba(43, 48, 59, 0.5) */
-    color: white;
+    background: @surface_container;
+    color: @on_surface;
 }
 
+/* ----- INFOS BULLES (tooltips) ----- */
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
+  background: @surface_container_high;
+  border: 1px solid @outline_variant;
 }
 tooltip label {
-  color: white;
+  color: @on_surface;
 }
 
+/* ----- WORKSPACES ----- */
 #workspaces {
     padding-left: 5px;
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 8px;
     background: transparent;
-    color: white;
+    color: @on_surface_variant;
     border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @on_primary_container;
+    background: @surface_container_high;
 }
 
 #workspaces button.focused {
-    background: #64727D;
-    border-bottom: 3px solid white;
+    background: @primary;
+    color: @on_primary;
+    border-bottom: 3px solid @on_primary;
 }
 
 #workspaces .active {
-    border-top: 1px solid white;
+    border-top: 1px solid @primary;
 }
 
+/* ----- MODULES GÉNÉRAUX ----- */
 #clock,
 #battery,
 #pulseaudio,
 #network,
 #custom-power,
 #backlight {
-    padding: 5 10;
+    padding: 5px 10px;
+    color: @on_surface;
+    background: transparent;
+}
+
+/* ----- MODULES SPÉCIFIQUES ----- */
+#battery.charging {
+    color: @tertiary;
+}
+
+#battery.warning {
+    color: @error;
+}
+
+#pulseaudio.muted {
+    color: @on_surface_variant;
+}
+
+#custom-power {
+    background: @error_container;
+    color: @on_error_container;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-right: 6px;
 }
