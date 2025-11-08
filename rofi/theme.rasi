@@ -24,29 +24,39 @@ configuration {
 @import                          "fonts.rasi"
 
 * {
-    border-colour:               var(selected);
-    handle-colour:               var(selected);
-    background-colour:           var(background);
-    foreground-colour:           var(foreground);
-    alternate-background:        var(background-alt);
-    normal-background:           var(background);
-    normal-foreground:           var(foreground);
-    urgent-background:           var(urgent);
-    urgent-foreground:           var(background);
-    active-background:           var(active);
-    active-foreground:           var(background);
-    selected-normal-background:  var(selected);
-    selected-normal-foreground:  var(background);
-    selected-urgent-background:  var(active);
-    selected-urgent-foreground:  var(background);
-    selected-active-background:  var(urgent);
-    selected-active-foreground:  var(background);
-    alternate-normal-background: var(background);
-    alternate-normal-foreground: var(foreground);
-    alternate-urgent-background: var(urgent);
-    alternate-urgent-foreground: var(background);
-    alternate-active-background: var(active);
-    alternate-active-foreground: var(background);
+    background-colour:           var(surface-container);
+    normal-background:           var(surface-container);
+
+    normal-foreground:           var(on-surface);
+    alternate-normal-foreground: var(on-surface);
+    foreground-colour:           var(on-surface);
+
+    selected-normal-background:  var(primary);
+    selected-normal-foreground:  var(on-primary);
+
+    active-background:           var(tertiary);
+    active-foreground:           var(on-tertiary);
+    urgent-background:           var(error-container);
+    urgent-foreground:           var(on-error-container);
+
+    alternate-background:        var(surface-container-high);
+    alternate-normal-background: var(surface-container-high);
+    alternate-urgent-foreground: var(on-error);
+    alternate-active-background: var(surface-container-highest);
+
+    border-colour:               var(outline-variant);
+    handle-colour:               var(outline);
+
+    selected-urgent-background:  var(error);
+    selected-urgent-foreground:  var(on-error);
+    selected-active-background:  var(tertiary);
+    selected-active-foreground:  var(on-tertiary);
+
+    alternate-urgent-background: var(error-container);
+    alternate-active-foreground: var(on-tertiary);
+
+    urgent-foreground:           var(on-error);
+    active-foreground:           var(on-tertiary);
 }
 
 /*****----- Main Window -----*****/
@@ -112,6 +122,7 @@ prompt {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 textbox-prompt-colon {
     enabled:                     true;
     padding:                     5px 0px;
@@ -120,6 +131,7 @@ textbox-prompt-colon {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 entry {
     enabled:                     true;
     padding:                     5px 0px;
@@ -129,12 +141,14 @@ entry {
     placeholder:                 "Search...";
     placeholder-color:           inherit;
 }
+
 num-filtered-rows {
     enabled:                     true;
     expand:                      false;
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 textbox-num-sep {
     enabled:                     true;
     expand:                      false;
@@ -142,12 +156,14 @@ textbox-num-sep {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 num-rows {
     enabled:                     true;
     expand:                      false;
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 case-indicator {
     enabled:                     true;
     background-color:            inherit;
@@ -177,6 +193,7 @@ listview {
     text-color:                  @foreground-colour;
     cursor:                      "default";
 }
+
 scrollbar {
     handle-width:                5px ;
     handle-color:                @handle-colour;
@@ -197,48 +214,59 @@ element {
     text-color:                  @foreground-colour;
     cursor:                      pointer;
 }
+
 element normal.normal {
     background-color:            var(normal-background);
     text-color:                  var(normal-foreground);
 }
+
 element normal.urgent {
     background-color:            var(urgent-background);
     text-color:                  var(urgent-foreground);
 }
+
 element normal.active {
     background-color:            var(active-background);
     text-color:                  var(active-foreground);
 }
+
 element selected.normal {
     background-color:            var(selected-normal-background);
     text-color:                  var(selected-normal-foreground);
 }
+
 element selected.urgent {
     background-color:            var(selected-urgent-background);
     text-color:                  var(selected-urgent-foreground);
 }
+
 element selected.active {
     background-color:            var(selected-active-background);
     text-color:                  var(selected-active-foreground);
 }
+
 element alternate.normal {
     background-color:            var(alternate-normal-background);
     text-color:                  var(alternate-normal-foreground);
 }
+
 element alternate.urgent {
     background-color:            var(alternate-urgent-background);
     text-color:                  var(alternate-urgent-foreground);
 }
+
 element alternate.active {
     background-color:            var(alternate-active-background);
     text-color:                  var(alternate-active-foreground);
 }
+
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
     size:                        24px;
     cursor:                      inherit;
 }
+
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
@@ -260,6 +288,7 @@ mode-switcher{
     background-color:            transparent;
     text-color:                  @foreground-colour;
 }
+
 button {
     padding:                     5px 10px;
     border:                      0px solid;
@@ -269,6 +298,7 @@ button {
     text-color:                  inherit;
     cursor:                      pointer;
 }
+
 button selected {
     background-color:            var(selected-normal-background);
     text-color:                  var(selected-normal-foreground);
@@ -285,6 +315,7 @@ message {
     background-color:            transparent;
     text-color:                  @foreground-colour;
 }
+
 textbox {
     padding:                     8px 10px;
     border:                      0px solid;
@@ -299,6 +330,7 @@ textbox {
     blink:                       true;
     markup:                      true;
 }
+
 error-message {
     padding:                     10px;
     border:                      2px solid;
