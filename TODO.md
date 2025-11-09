@@ -30,12 +30,12 @@ Ce document suit l’évolution de mon setup, du système de base jusqu’à la 
 
 ## 🧩 A venir
 
-- [] Ajouter une section **post-install Hyprland (dotfiles + configs)** dans le script    
-- [] Ajouter une gestion cohérente des **polices (Nerd Fonts + Terminus)**  
-- [] Ajouter un **refind theme** (bootloader)
-- [] Finir le **README** avec captures d’écran et explications
-- [] Wallpaper par défault  
-- [] Créer / appliquer un **thème SDDM personnalisé**  
-- [] Mettre à jour le [**script dunst-acpi**](dunst//dunst-acpi_listener.sh) pour la gestion batterie / notifications  
-- [] Thématiser **Dolphin / KDE** avec **matugen**
-- [] Création du **script d’installation automatisé** 
+- [ ] Ajouter une section **post-install Hyprland (dotfiles + configs)** dans le script    
+- [ ] Ajouter une gestion cohérente des **polices (Nerd Fonts + Terminus)**  
+- [ ] Ajouter un **refind theme** (bootloader)
+- [ ] Finir le **README** avec captures d’écran et explications
+- [ ] Wallpaper par défault  
+- [ ] Créer / appliquer un **thème SDDM personnalisé**  
+- [ ] Mettre à jour le [**script dunst-acpi**](dunst//dunst-acpi_listener.sh) pour la gestion batterie / notifications  
+- [ ] Thématiser **Dolphin / KDE** avec **matugen**
+- [ ] Création du **script d’installation automatisé** 
