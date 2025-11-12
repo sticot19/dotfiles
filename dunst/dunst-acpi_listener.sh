@@ -10,6 +10,7 @@ battery_check() {
             [[ $battery_level -lt 20 ]] && \
                 notify-send \
                     -u critical \
+                    -r 9994 \
                     "Batterie info" \
                     "Batterie faible - Niveau : $battery_level%" 
             ;;
@@ -17,6 +18,7 @@ battery_check() {
             [[ $battery_level -gt 95 ]] && \
                 notify-send \
                     -u normal \
+                    -r 9994 \
                     "Batterie info" \
                     "Batterie presque pleine - Niveau : $battery_level%"
             ;;
@@ -28,12 +30,14 @@ ac_event() {
         *0x00000080)
             notify-send \
                 -u low \
+                -r 9993 \
                 "Alimentation" \
                 "Branchement secteur détecté"
             ;;
         *0x00000001)
             notify-send \
                 -u low \
+                -r 9993 \
                 "Alimentation" \
                 "Débranchement secteur détecté"
             battery_check
@@ -44,8 +48,7 @@ ac_event() {
 brightness_event() {
     local current_level max_level percentage
     
-    # Petit délai pour laisser le système appliquer le changement
-    sleep 0.1
+    sleep 0.03
     
     case "$1" in
         *brightnessup*|*brightnessdown*)
@@ -65,8 +68,7 @@ brightness_event() {
 volume_event() {
     local current_level
     
-    # Petit délai pour laisser le système appliquer le changement
-    sleep 0.1
+    sleep 0.03
     
     case "$1" in
         *volumeup*|*volumedown*)
