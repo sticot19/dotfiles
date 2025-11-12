@@ -1,7 +1,6 @@
 #!/bin/bash
 
 battery_check() {
-    # Récupérer les informations de la batterie à chaque appel
     local battery_info=$(acpi -b 2>/dev/null)
     local battery_status=$(echo "$battery_info" | grep -Po 'Discharging|Charging|Full' | head -1)
     local battery_level=$(echo "$battery_info" | grep -Po '[0-9]+(?=%)' | head -1)
@@ -26,24 +25,28 @@ battery_check() {
 
 ac_event() {
     case "$1" in
-        *00000001)
+        *0x00000080)
             notify-send \
                 -u low \
                 "Alimentation" \
                 "Branchement secteur détecté"
             ;;
-        *00000000)
+        *0x00000001)
             notify-send \
                 -u low \
                 "Alimentation" \
                 "Débranchement secteur détecté"
-            battery_check  # Vérifier la batterie après débranchement
+            battery_check
             ;;
     esac
 }
 
 brightness_event() {
     local current_level max_level percentage
+    
+    # Petit délai pour laisser le système appliquer le changement
+    sleep 0.1
+    
     case "$1" in
         *brightnessup*|*brightnessdown*)
             current_level=$(brightnessctl get)
@@ -61,6 +64,10 @@ brightness_event() {
 
 volume_event() {
     local current_level
+    
+    # Petit délai pour laisser le système appliquer le changement
+    sleep 0.1
+    
     case "$1" in
         *volumeup*|*volumedown*)
             current_level=$(ponymix get-volume)
@@ -83,10 +90,10 @@ acpi_listen | while read -r line; do
             battery_check
             ;;
         video/brightness*)
-            brightness_event "$line"
+            brightness_event "$line" &
             ;;
         button/volume*)
-            volume_event "$line"
+            volume_event "$line" &
             ;;
     esac
 done
