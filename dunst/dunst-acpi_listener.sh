@@ -1,8 +1,7 @@
 #!/bin/bash
 
-icons_path=""
-
 battery_check() {
+    # Récupérer les informations de la batterie à chaque appel
     local battery_info=$(acpi -b 2>/dev/null)
     local battery_status=$(echo "$battery_info" | grep -Po 'Discharging|Charging|Full' | head -1)
     local battery_level=$(echo "$battery_info" | grep -Po '[0-9]+(?=%)' | head -1)
@@ -27,66 +26,50 @@ battery_check() {
 
 ac_event() {
     case "$1" in
-        *0x00000000)
+        *00000001)
             notify-send \
                 -u low \
                 "Alimentation" \
                 "Branchement secteur détecté"
             ;;
-        *0x00000001)
+        *00000000)
             notify-send \
                 -u low \
                 "Alimentation" \
                 "Débranchement secteur détecté"
-
-            battery_check
+            battery_check  # Vérifier la batterie après débranchement
             ;;
     esac
 }
 
 brightness_event() {
-    local current_level=$(brightnessctl get)
-    local max_level=$(brightnessctl max)
-    local percentage=$(( (current_level * 100) / max_level ))
-    
+    local current_level max_level percentage
     case "$1" in
-        *brightnessup*)
+        *brightnessup*|*brightnessdown*)
+            current_level=$(brightnessctl get)
+            max_level=$(brightnessctl max)
+            percentage=$(( (current_level * 100) / max_level ))
             notify-send \
                 -u low \
-                -h int:value:"$percentage" \
+                -h "int:value:$percentage" \
                 -r 9991 \
                 "Luminosité" \
-                "Augmentée - $percentage%"
-            ;;
-        *brightnessdown*)
-            notify-send \
-                -u low \
-                -h int:value:"$percentage" \
-                -r 9991 \
-                "Luminosité" \
-                "Diminuée - $percentage%"
+                "Niveau : $percentage%"
             ;;
     esac
 }
 
 volume_event() {
-    local current_level=$(ponymix get-volume)
+    local current_level
     case "$1" in
-        *volumeup*)
+        *volumeup*|*volumedown*)
+            current_level=$(ponymix get-volume)
             notify-send \
                 -u low \
-                -h int:value:"$current_level" \
+                -h "int:value:$current_level" \
                 -r 9992 \
                 "Volume" \
-                "Augmenté - $current_level%"
-            ;;
-        *volumedown*)
-            notify-send \
-                -u low \
-                -h int:value:"$current_level" \
-                -r 9992 \
-                "Volume" \
-                "Diminué - $current_level%"
+                "Niveau : $current_level%"
             ;;
     esac
 }
