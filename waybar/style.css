@@ -10,7 +10,7 @@
 
 /* ----- BARRE PRINCIPALE ----- */
 window#waybar {
-    background: @surface_container;
+    background: transparent;
     color: @on_surface;
 }
 
@@ -48,7 +48,7 @@ tooltip label {
 }
 
 #workspaces .active {
-    border-top: 1px solid @primary;
+    color: @source_color;
 }
 
 /* ----- MODULES GÉNÉRAUX ----- */
@@ -77,9 +77,11 @@ tooltip label {
 }
 
 #custom-power {
-    background: @error_container;
-    color: @on_error_container;
-    border-radius: 6px;
-    padding: 4px 8px;
-    margin-right: 6px;
+    color: @error_container;
+}
+
+.modules-left, .modules-right {
+    background-color: @surface;
+    color: @on_surface;
+    border-radius: 16px;
 }
