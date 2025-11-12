@@ -10,3 +10,5 @@ swww img "$wallpaper" --transition-type any --transition-fps 60 --transition-dur
 
 # Application des couleurs avec matugen
 matugen image "$wallpaper"
+
+killall -9 waybar && waybar &
